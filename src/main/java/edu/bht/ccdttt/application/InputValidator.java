@@ -9,12 +9,37 @@ class InputValidator {
     GameBoard currentGameBoard;
     GameBoard.PLAYER_SYMBOL currentPlayer;
 
-    public InputValidator(GameBoard currentGameBoard, GameBoard.PLAYER_SYMBOL currentPlayer) {
+    public InputValidator(GameBoard currentGameBoard) {
         this.currentGameBoard = currentGameBoard;
-        this.currentPlayer = currentPlayer;
     }
 
-    int getPlayerNextMove() {
+   static boolean askForNewGame() {
+        while(true) {
+            try {
+                System.out.print("Start new game? (0 = no, 1 = yes): ");
+                Scanner scanner = new Scanner(System.in);
+                int input = scanner.nextInt();
+
+                if (input < 0 || input > 1) {
+                    System.out.print("\nOny numbers 0 to 1, please! ");
+                    continue;
+                }
+
+                if (input == 1) {
+                    return true;
+                } else {
+                    System.exit(0);
+                }
+
+            } catch(InputMismatchException | NumberFormatException ex ) {
+                System.out.print("\nOny numbers 0 to 1, please! ");
+            } catch(Exception e ) {
+                System.out.println("\n\nException caught :: " + e);
+            }
+        }
+    }
+
+    int getPlayerNextMove(GameBoard.PLAYER_SYMBOL currentPlayer) {
         int nextMove;
 
         while(true) {

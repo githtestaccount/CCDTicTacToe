@@ -1,9 +1,6 @@
 package edu.bht.ccdttt.data;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class GameBoard {
     static final int GAME_BOARD_SIZE = 9;
@@ -46,13 +43,29 @@ public class GameBoard {
     //nine game board cells for board display
     public HashMap<Integer, CELL> gameBoardCells = new HashMap<>(9, 1.0F);
 
-    //two sets of cells to register the players moves
-    public HashMap<String, HashSet<Integer>> playerMoves = new HashMap<>(2, 1.0F);
+    //two sets of cell indices to register the players moves
+    public HashMap<PLAYER_SYMBOL, HashSet<Integer>> playerMoves = new HashMap<>(2, 1.0F);
+    //public ArrayList<HashSet<Integer>> playerMoves = new ArrayList<HashSet<Integer>>();
 
     public GameBoard() {
         for (int i = 1; i <= GAME_BOARD_SIZE; i++) {
             this.gameBoardCells.put(i, CELL.EMPTY);
+            this.playerMoves.put(PLAYER_SYMBOL.X, new HashSet<Integer>());
+            this.playerMoves.put(PLAYER_SYMBOL.O, new HashSet<Integer>());
         }
+    }
+
+    public void registerMove(int cellIndex, PLAYER_SYMBOL currentPlayer) {
+        CELL cellStatus = CELL.EMPTY;
+        if (currentPlayer == PLAYER_SYMBOL.X) {
+            cellStatus = CELL.X;
+        } else {
+            cellStatus = CELL.O;
+        }
+        gameBoardCells.put(cellIndex, cellStatus);
+        //System.out.println("Old size: " + playerMoves.get(currentPlayer).size());
+        playerMoves.get(currentPlayer).add(cellIndex);
+        //System.out.println("New size: " + playerMoves.get(currentPlayer).size());
     }
 
     //helper method
