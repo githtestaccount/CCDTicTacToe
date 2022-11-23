@@ -9,7 +9,12 @@ class InputValidator {
     GameBoard currentGameBoard;
     GameBoard.PLAYER_SYMBOL currentPlayer;
 
-    int getPlayerInput() {
+    public InputValidator(GameBoard currentGameBoard, GameBoard.PLAYER_SYMBOL currentPlayer) {
+        this.currentGameBoard = currentGameBoard;
+        this.currentPlayer = currentPlayer;
+    }
+
+    int getPlayerNextMove() {
         int nextMove;
 
         while(true) {
@@ -28,6 +33,7 @@ class InputValidator {
                     continue;
                 }
                 break;
+
             } catch(InputMismatchException | NumberFormatException ex ) {
                 System.out.print("\nOny numbers 1 to 9, please! ");
             } catch(Exception e ) {
@@ -35,10 +41,5 @@ class InputValidator {
             }
         }
         return nextMove;
-    }
-
-    public InputValidator(GameBoard currentGameBoard, GameBoard.PLAYER_SYMBOL currentPlayer) {
-        this.currentGameBoard = currentGameBoard;
-        this.currentPlayer = currentPlayer;
     }
 }

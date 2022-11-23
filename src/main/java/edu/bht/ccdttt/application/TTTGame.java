@@ -5,7 +5,7 @@ import edu.bht.ccdttt.data.GameBoard;
 import java.util.Arrays;
 import java.util.HashSet;
 
-public class TTTMain {
+public class TTTGame {
     public static void main(String[] args) {
 
         System.out.println("CCD-TicTacToe for the masses!");
@@ -18,8 +18,13 @@ public class TTTMain {
             System.out.println(testSet.containsAll(fullRow));
         }
 
+        // Test GameBoardDrawer
+        // GameBoardDrawer drawer = new GameBoardDrawer(testBoard);
+        GameBoardDrawer.drawGameBoard(testBoard);
+        GameBoardDrawer.drawGameBoardIndices(testBoard);
+
         // Test user input
         testBoard.gameBoardCells.put(4, GameBoard.CELL.X);
-        System.out.println("Test: " + input.getPlayerInput());
+        System.out.println("Test: " + input.getPlayerNextMove());
     }
 }
