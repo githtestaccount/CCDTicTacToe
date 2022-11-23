@@ -10,6 +10,7 @@ public class TTTMain {
 
         System.out.println("CCD-TicTacToe for the masses!");
         GameBoard testBoard = new GameBoard();
+        InputValidator input = new InputValidator(testBoard, GameBoard.PLAYER_SYMBOL.X);
         // Print possible full rows
         System.out.println(Arrays.toString(GameBoard.POSSIBLE_FULL_ROWS));
         HashSet<Integer> testSet = (HashSet<Integer>) GameBoard.newHashSet(1,2,3,4,5,6,7,8,9);
@@ -18,6 +19,7 @@ public class TTTMain {
         }
 
         // Test user input
-        System.out.println("Test: " + InputValidator.getPlayerInput("Player X"));
+        testBoard.gameBoardCells.put(4, GameBoard.CELL.X);
+        System.out.println("Test: " + input.getPlayerInput());
     }
 }

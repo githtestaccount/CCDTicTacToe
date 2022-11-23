@@ -8,7 +8,7 @@ import java.util.Set;
 public class GameBoard {
     static final int GAME_BOARD_SIZE = 9;
 
-    //three possible states of game board cells
+    //three possible states of game board cells: X, O and EMPTY
     public enum CELL {
         X("X"),
         O("O"),
@@ -16,6 +16,17 @@ public class GameBoard {
 
         public final String label;
         CELL(String label) {
+            this.label = label;
+        }
+    }
+
+    //two possible Players: X and O
+    public enum PLAYER_SYMBOL {
+        X("X"),
+        O("O");
+
+        public final String label;
+        PLAYER_SYMBOL(String label) {
             this.label = label;
         }
     }
