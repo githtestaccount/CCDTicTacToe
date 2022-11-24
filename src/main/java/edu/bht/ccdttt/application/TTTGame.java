@@ -3,9 +3,6 @@ package edu.bht.ccdttt.application;
 import static java.lang.System.*;
 import edu.bht.ccdttt.data.GameBoard;
 import edu.bht.ccdttt.data.GameBoard.PLAYER_SYMBOL;
-
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Random;
 
 public class TTTGame {
@@ -20,6 +17,7 @@ public class TTTGame {
 
         //start game
         while(InputValidator.askForNewGame()) {
+
             //choose randomly which player gets the first move
             PLAYER_SYMBOL[] players;
             players = GameBoard.PLAYER_SYMBOL.values();
@@ -35,32 +33,25 @@ public class TTTGame {
                 int nextMove = input.getPlayerNextMove(currentPlayer);
                 gameBoard.registerMove(nextMove, currentPlayer);
                 GameBoardDrawer.drawGameBoard(gameBoard);
-                break;
+
+                if (GameBoardRules.checkWinner(gameBoard, currentPlayer)) {
+                    System.out.println(currentPlayer.label + " wins!");
+                    break;
+                }
+
+                if (GameBoardRules.checkTie(gameBoard)) {
+                    System.out.println("No one wins!");
+                    break;
+                }
+
+                if (currentPlayer == PLAYER_SYMBOL.X) {
+                    currentPlayer = PLAYER_SYMBOL.O;
+                } else {
+                    currentPlayer = PLAYER_SYMBOL.X;
+                }
+
             }
 
         }
-
-
-
-
-
-
-        GameBoard testBoard = new GameBoard();
-        InputValidator input = new InputValidator(testBoard);
-        // Print possible full rows
-        System.out.println(Arrays.toString(GameBoard.POSSIBLE_FULL_ROWS));
-        HashSet<Integer> testSet = (HashSet<Integer>) GameBoard.newHashSet(1,2,3,4,5,6,7,8,9);
-        for (HashSet<Integer> fullRow : GameBoard.POSSIBLE_FULL_ROWS) {
-            System.out.println(testSet.containsAll(fullRow));
-        }
-
-        // Test GameBoardDrawer
-        // GameBoardDrawer drawer = new GameBoardDrawer(testBoard);
-        GameBoardDrawer.drawGameBoard(testBoard);
-        GameBoardDrawer.drawGameBoardIndices(testBoard);
-
-        // Test user input
-        testBoard.gameBoardCells.put(4, GameBoard.CELL.X);
-        System.out.println("Test: " + input.getPlayerNextMove(PLAYER_SYMBOL.O));
     }
 }

@@ -29,7 +29,7 @@ public class GameBoard {
     }
 
     //eight cell combinations are full rows
-    public static final HashSet[] POSSIBLE_FULL_ROWS = new HashSet[]{
+    public static final HashSet<Integer>[] POSSIBLE_FULL_ROWS = new HashSet[]{
             (HashSet<Integer>) newHashSet(7,8,9),
             (HashSet<Integer>) newHashSet(4,5,6),
             (HashSet<Integer>) newHashSet(1,2,3),
@@ -69,7 +69,7 @@ public class GameBoard {
     }
 
     //helper method
-    public static final <T> Set<T> newHashSet(T... objs) {
+    public static <T> Set<T> newHashSet(T... objs) {
         Set<T> set = new HashSet<T>();
         Collections.addAll(set, objs);
         return set;

@@ -7,7 +7,7 @@ import edu.bht.ccdttt.data.GameBoard;
 class InputValidator {
 
     GameBoard currentGameBoard;
-    GameBoard.PLAYER_SYMBOL currentPlayer;
+    //GameBoard.PLAYER_SYMBOL currentPlayer;
 
     public InputValidator(GameBoard currentGameBoard) {
         this.currentGameBoard = currentGameBoard;
