@@ -45,27 +45,24 @@ public class GameBoard {
 
     //two sets of cell indices to register the players moves
     public HashMap<PLAYER_SYMBOL, HashSet<Integer>> playerMoves = new HashMap<>(2, 1.0F);
-    //public ArrayList<HashSet<Integer>> playerMoves = new ArrayList<HashSet<Integer>>();
 
     public GameBoard() {
         for (int i = 1; i <= GAME_BOARD_SIZE; i++) {
             this.gameBoardCells.put(i, CELL.EMPTY);
-            this.playerMoves.put(PLAYER_SYMBOL.X, new HashSet<Integer>());
-            this.playerMoves.put(PLAYER_SYMBOL.O, new HashSet<Integer>());
+            this.playerMoves.put(PLAYER_SYMBOL.X, new HashSet<>());
+            this.playerMoves.put(PLAYER_SYMBOL.O, new HashSet<>());
         }
     }
 
     public void registerMove(int cellIndex, PLAYER_SYMBOL currentPlayer) {
-        CELL cellStatus = CELL.EMPTY;
+        CELL cellStatus;
         if (currentPlayer == PLAYER_SYMBOL.X) {
             cellStatus = CELL.X;
         } else {
             cellStatus = CELL.O;
         }
         gameBoardCells.put(cellIndex, cellStatus);
-        //System.out.println("Old size: " + playerMoves.get(currentPlayer).size());
         playerMoves.get(currentPlayer).add(cellIndex);
-        //System.out.println("New size: " + playerMoves.get(currentPlayer).size());
     }
 
     //helper method

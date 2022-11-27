@@ -7,6 +7,10 @@ import java.util.HashSet;
 
 public class GameBoardRules {
 
+    private GameBoardRules() {
+        throw new IllegalStateException("Constant Class, no instantiation!");
+    }
+
     public static boolean checkWinner(GameBoard gameBoard, PLAYER_SYMBOL currentPlayer) {
         for (HashSet<Integer> fullRow : GameBoard.POSSIBLE_FULL_ROWS) {
             if (gameBoard.playerMoves.get(currentPlayer).containsAll(fullRow)) {
