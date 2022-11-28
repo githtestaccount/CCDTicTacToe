@@ -7,7 +7,6 @@ import edu.bht.ccdttt.data.GameBoard;
 class InputValidator {
 
     GameBoard currentGameBoard;
-    //GameBoard.PLAYER_SYMBOL currentPlayer;
 
     public InputValidator(GameBoard currentGameBoard) {
         this.currentGameBoard = currentGameBoard;
@@ -53,7 +52,7 @@ class InputValidator {
                     continue;
                 }
 
-                if (currentGameBoard.gameBoardCells.get(nextMove) != GameBoard.CELL.EMPTY) {
+                if (currentGameBoard.getGameBoardCells().get(nextMove) != GameBoard.CELL.EMPTY) {
                     System.out.print("\nChoose a free square, please! ");
                     continue;
                 }

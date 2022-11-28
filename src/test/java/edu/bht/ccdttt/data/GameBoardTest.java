@@ -17,12 +17,12 @@ public class GameBoardTest {
         GameBoard gameBoardUnderTest = new GameBoard();
 
         //Test size of cell map
-        assertThat(gameBoardUnderTest.gameBoardCells.size(), is(9));
+        assertThat(gameBoardUnderTest.getGameBoardCells().size(), is(9));
 
         //Test empty values/labels of new cell map
-        assertThat(gameBoardUnderTest.gameBoardCells, IsMapContaining.hasEntry(1, GameBoard.CELL.EMPTY));
-        assertThat(gameBoardUnderTest.gameBoardCells.get(1).label, is(" "));
-        assertThat(gameBoardUnderTest.gameBoardCells, IsMapContaining.hasEntry(9, GameBoard.CELL.EMPTY));
-        assertThat(gameBoardUnderTest.gameBoardCells.get(9).label, is(" "));
+        assertThat(gameBoardUnderTest.getGameBoardCells(), IsMapContaining.hasEntry(1, GameBoard.CELL.EMPTY));
+        assertThat(gameBoardUnderTest.getGameBoardCells().get(1).label, is(" "));
+        assertThat(gameBoardUnderTest.getGameBoardCells(), IsMapContaining.hasEntry(9, GameBoard.CELL.EMPTY));
+        assertThat(gameBoardUnderTest.getGameBoardCells().get(9).label, is(" "));
     }
 }

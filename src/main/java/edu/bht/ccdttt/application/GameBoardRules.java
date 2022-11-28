@@ -13,7 +13,7 @@ public class GameBoardRules {
 
     public static boolean checkWinner(GameBoard gameBoard, PLAYER_SYMBOL currentPlayer) {
         for (HashSet<Integer> fullRow : GameBoard.POSSIBLE_FULL_ROWS) {
-            if (gameBoard.playerMoves.get(currentPlayer).containsAll(fullRow)) {
+            if (gameBoard.getPlayerMoves().get(currentPlayer).containsAll(fullRow)) {
                 return true;
             }
         }
@@ -21,7 +21,7 @@ public class GameBoardRules {
     }
 
     public static boolean checkTie(GameBoard gameBoard) {
-        return gameBoard.playerMoves.get(PLAYER_SYMBOL.X).size() +
-                gameBoard.playerMoves.get(PLAYER_SYMBOL.O).size() == 9;
+        return gameBoard.getPlayerMoves().get(PLAYER_SYMBOL.X).size() +
+                gameBoard.getPlayerMoves().get(PLAYER_SYMBOL.O).size() == 9;
     }
 }

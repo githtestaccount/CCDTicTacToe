@@ -41,10 +41,10 @@ public class GameBoard {
     };
 
     //nine game board cells for board display
-    public HashMap<Integer, CELL> gameBoardCells = new HashMap<>(9, 1.0F);
+    private Map<Integer, CELL> gameBoardCells = new HashMap<>(9, 1.0F);
 
     //two sets of cell indices to register the players moves
-    public HashMap<PLAYER_SYMBOL, HashSet<Integer>> playerMoves = new HashMap<>(2, 1.0F);
+    private Map<PLAYER_SYMBOL, HashSet<Integer>> playerMoves = new EnumMap<>(PLAYER_SYMBOL.class);
 
     public GameBoard() {
         for (int i = 1; i <= GAME_BOARD_SIZE; i++) {
@@ -63,6 +63,14 @@ public class GameBoard {
         }
         gameBoardCells.put(cellIndex, cellStatus);
         playerMoves.get(currentPlayer).add(cellIndex);
+    }
+
+    public Map<Integer, CELL> getGameBoardCells() {
+        return gameBoardCells;
+    }
+
+    public Map<PLAYER_SYMBOL, HashSet<Integer>> getPlayerMoves() {
+        return playerMoves;
     }
 
     //helper method

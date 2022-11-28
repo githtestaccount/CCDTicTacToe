@@ -8,11 +8,16 @@ import static java.lang.System.*;
 import static org.apache.commons.text.StringSubstitutor.*;
 
 public class GameBoardDrawer {
+
+    private GameBoardDrawer() {
+        throw new IllegalStateException("Utility Class, no instantiation!");
+    }
+
     //draw game board with all cells status
     static void drawGameBoard(GameBoard currentGameBoard) {
         Map<String, String> displayMap;
         displayMap = new HashMap<>();
-        for (Map.Entry<Integer, GameBoard.CELL> entry : currentGameBoard.gameBoardCells.entrySet()) {
+        for (Map.Entry<Integer, GameBoard.CELL> entry : currentGameBoard.getGameBoardCells().entrySet()) {
             displayMap.put(String.valueOf(entry.getKey()), entry.getValue().label);
         }
         draw(displayMap);
@@ -22,7 +27,7 @@ public class GameBoardDrawer {
     static void drawGameBoardIndices(GameBoard currentGameBoard) {
         Map<String, String> displayMap;
         displayMap = new HashMap<>();
-        for (Map.Entry<Integer, GameBoard.CELL> entry : currentGameBoard.gameBoardCells.entrySet()) {
+        for (Map.Entry<Integer, GameBoard.CELL> entry : currentGameBoard.getGameBoardCells().entrySet()) {
             String index = String.valueOf(entry.getKey());
             displayMap.put(index, index);
         }
